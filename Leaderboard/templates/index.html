@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leaderboard</title>
+        <link rel="stylesheet" href="{% static 'index.css' %}">
+        <!--<link rel="text/javascript" src="{% static 'index.js' %}">-->
+    </head>
+    <body>
+        <div id="content">
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Max_vel</th>
+            </tr>
+            {% for x in User%}
+            <tr>
+                <td id="rank"><a href="data/{{x.id}}">{{forloop.counter}}</a></td>
+                <td><a href="data/{{x.id}}">{{x.id}}</a></td>
+                <td><a href="data/{{x.id}}">{{x.name}}</a></td>
+                <td><a href="data/{{x.id}}">{{x.max_velocity}}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    </body>
+</html>

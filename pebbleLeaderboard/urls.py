@@ -16,9 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from test1 import views
+#from test1 import views
+from Leaderboard import views
 
 urlpatterns = [
-    path('test1/', views.test, name='test1'),
-    path('admin/', admin.site.urls)
+    #path('test1/', views.test, name='test1'),
+    path('admin/', admin.site.urls),
+    path('',views.index,name="index"),
+    path('data/<slug:slug>',views.data,name="data"),
+    path('api/getlist',views.getList),
+    path('api/getdata/<slug:slug>',views.getThrow),
+    path('api/setdata/<slug:name>/<slug:vel>',views.insertThrow)
 ]

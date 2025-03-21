@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ez egy teszt</title>
+        <link rel="stylesheet" href="{% static 'data.css' %}">
+    </head>
+    <body>
+        <div id="content">
+            <h1>Pebble Throwing #{{user.id}}</h1>
+        <p>Name: {{user.name}}</p>
+        <p>Maximum velocity: {{user.max_velocity}} m/s</p>
+    </div>
+    </body>
+</html>
