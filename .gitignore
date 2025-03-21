@@ -2,3 +2,6 @@ Leaderboard/.DS_Store/
 Leaderboard/__pycache__/
 pebbleLeaderboard/__pycache__/
 /.DS_Store/
+.env
+/pebbleLeaderboard/.env
+/Leaderboard/.env
