@@ -26,5 +26,5 @@ urlpatterns = [
     path('data/<slug:slug>',views.data,name="data"),
     path('api/getlist',views.getList),
     path('api/getdata/<slug:slug>',views.getThrow),
-    path('api/setdata/<slug:name>/<slug:vel>',views.insertThrow)
+    path('api/setdata/',views.insertThrow,name="setdata")
 ]

@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 import json
 from .models import User
+from dotenv import dotenv_values
+import urllib.parse
+import jwt
 
 def index(request):
     users = User.objects.all().order_by("-max_velocity").values()
@@ -40,11 +43,14 @@ def getThrow(request, slug):
         result = json.dumps({'error': '404'},ensure_ascii=False,default=str)
         return JsonResponse(result,safe=False)
 
-def insertThrow(request,name,vel):
+def insertThrow(request):
     try:
-        vel = vel.replace('_','.')
-        print(vel)
-        user = User(name=str(name),max_velocity = float(vel))
+        KEYS = dotenv_values()
+        json_data = request.GET.get("payload")
+        init = json.loads(urllib.parse.unquote(json_data))
+        print(init)
+        data = jwt.decode(init["jwt"],KEYS["JWT_SECRET"],algorithms=["HS256"])
+        user = User(name=data.get("name"),max_velocity=data.get("max_velocity"))
         user.save()
         return JsonResponse(json.dumps([{'result':'success'}]),safe=False)
     except:
