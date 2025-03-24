@@ -26,8 +26,7 @@ def data(request,slug):
     user = User.objects.get(id=slug)
     template = loader.get_template("data.html")
     context = {
-        "user": user,
-        'alt_route': '../../' + user.video_source.__str__()
+        "user": user
     }
     return HttpResponse(template.render(context,request))
 
