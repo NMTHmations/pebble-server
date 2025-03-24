@@ -26,7 +26,8 @@ def data(request,slug):
     user = User.objects.get(id=slug)
     template = loader.get_template("data.html")
     context = {
-        "user": user
+        "user": user,
+        'alt_route': '../../' + user.video_source.__str__()
     }
     return HttpResponse(template.render(context,request))
 
@@ -80,7 +81,6 @@ class VideoUpload(APIView):
             if lastUser.video_source:
                 return JsonResponse({'Response': 403, 'Message': 'A file has been uploaded already'})
             diff = datetime.datetime.now().timestamp() - lastUser.created_at.timestamp()
-            print(diff)
             if diff >= float(120):
                 return JsonResponse({'Response':504,'Message': 'Timeout for video upload'})
             lastUser.video_source = file_obj

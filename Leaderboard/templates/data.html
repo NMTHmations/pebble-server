@@ -10,6 +10,14 @@
             <h1>Pebble Throwing #{{user.id}}</h1>
         <p>Name: {{user.name}}</p>
         <p>Maximum velocity: {{user.max_velocity}} m/s</p>
+        <p>Distance: {{user.distance}}</p>
+        <p>Created: {{user.created_at}}</p>
+        {%if user.video_source%}
+        <video controls width="250">
+            <source src="{{user.video_source.url}}" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+        {% endif %}
     </div>
     </body>
 </html>
