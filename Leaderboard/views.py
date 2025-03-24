@@ -18,7 +18,7 @@ def index(request):
     users = User.objects.all().order_by("-max_velocity").values()
     template = loader.get_template("index.html")
     context = {
-        "User": users,
+        "User": users
     }
     return HttpResponse(template.render(context,request))
 
