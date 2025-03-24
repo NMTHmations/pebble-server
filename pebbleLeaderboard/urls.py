@@ -26,5 +26,7 @@ urlpatterns = [
     path('data/<slug:slug>',views.data,name="data"),
     path('api/getlist',views.getList),
     path('api/getdata/<slug:slug>',views.getThrow),
-    path('api/setdata/',views.insertThrow,name="setdata")
+    path('api/setdata/',views.insertThrow,name="setdata"),
+    #path(r'^api/upload-video/(?P<filename>[^/]+)$',views.VideoUpload.as_view(),name="uploadVideo")
+    path('api/upload-video/<str:filename>/', views.VideoUpload.as_view(), name="uploadVideo"),
 ]

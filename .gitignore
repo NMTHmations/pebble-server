@@ -6,3 +6,5 @@ pebbleLeaderboard/.DS_Store/
 .env
 /pebbleLeaderboard/.env
 /Leaderboard/.env
+/uploads/
+.DS_Store
