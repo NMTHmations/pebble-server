@@ -16,15 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-#from test1 import views
 from Leaderboard import views
+from . import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
-    #path('test1/', views.test, name='test1'),
     path('admin/', admin.site.urls),
     path('',views.index,name="index"),
-    path('data/<slug:slug>',views.data,name="data"),
+    path('data/<slug:slug>',views.data),
     path('api/getlist',views.getList),
     path('api/getdata/<slug:slug>',views.getThrow),
-    path('api/setdata/',views.insertThrow,name="setdata")
+    path('api/setdata/',views.insertThrow,name="setdata"),
+    path('api/upload-video/<str:filename>/', views.VideoUpload.as_view(), name="uploadVideo"),
 ]
+
+if settings.DEBUG:  # Only for development
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
