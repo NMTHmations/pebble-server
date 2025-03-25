@@ -60,7 +60,8 @@ def insertThrow(request):
         data = jwt.decode(init["jwt"],KEYS["JWT_SECRET"],algorithms=["HS256"])
         if not data:
             return JsonResponse(json.dumps([{'result':'Invalid request'}]),safe=False)
-        user = User(name=data.get("name"),max_velocity=data.get("max_velocity"))
+        print(data)
+        user = User(name=data.get("name"),max_velocity=data.get("max_velocity"),distance=data.get("distance"))
         user.save()
         return JsonResponse(json.dumps([{'result':'success'}]),safe=False)
     except:

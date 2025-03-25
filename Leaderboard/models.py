@@ -12,6 +12,6 @@ class User(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255,null=False)
     max_velocity = models.FloatField(null=False)
-    distance = models.FloatField(null=True)
+    distance = models.FloatField(null=False)
     video_source = models.FileField(upload_to=user_directory_path,null=True,validators=[FileExtensionValidator(['mp4'])])
     created_at = models.DateTimeField(null=True,auto_now=True)
