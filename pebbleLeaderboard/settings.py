@@ -81,25 +81,11 @@ WSGI_APPLICATION = 'pebbleLeaderboard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
-"""
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': secrets["RDS_NAME"],
-        'USER': secrets["RDS_USERNAME"],
-        'PASSWORD': secrets["RDS_PASSWORD"],
-        'HOST': secrets["RDS_DB_HOST"],
-        'PORT': secrets["RDS_PORT"],
-    },
 }
 
 
