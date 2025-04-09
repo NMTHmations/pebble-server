@@ -29,9 +29,9 @@ secrets = dotenv_values()
 SECRET_KEY = secrets["DJANGO_SECRET"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pebble-leaderboard.eba-xbvfuitt.eu-north-1.elasticbeanstalk.com']
 
 
 # Application definition

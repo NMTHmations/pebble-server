@@ -8,3 +8,8 @@ pebbleLeaderboard/.DS_Store/
 /Leaderboard/.env
 /uploads/
 .DS_Store
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
