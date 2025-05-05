@@ -9,7 +9,7 @@ def user_directory_path(instance, filename):
     return f"uploads/{instance.id}/{filename}"
 
 class User(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255,null=False)
     max_velocity = models.FloatField(null=False)
     distance = models.FloatField(null=False)

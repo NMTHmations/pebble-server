@@ -15,3 +15,23 @@ body {
 #content h1 {
     text-align: center;
 }
+
+@media only screen and (max-width: 1000px) {
+    #content {
+        width: 100%;
+        margin-left: 0%;
+    }
+    #content h1 {
+        font-size: 3.5em;
+        text-align: center;
+    }
+    #content p {
+        font-size: 2em;
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    video {
+        width: 100%;
+        height: auto;
+    }
+  }

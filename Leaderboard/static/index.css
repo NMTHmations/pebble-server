@@ -46,3 +46,28 @@ a:link {
     text-decoration: none;
     color: black;
   }
+
+  @media only screen and (max-width: 1000px) {
+    table {
+      margin-left: 0%;
+      margin-right: 0%;
+      align-self: center;
+      text-align: center;
+      width: 100%;
+  }
+  h1 {
+    text-align: center;
+    font-size: 3.5em;
+  }
+  th, td {
+    border-bottom: 1px solid #ddd;
+    border-right: 0px;
+    border-left: 0px;
+  }
+  th {
+    font-size: 2.5em;
+  }
+  td {
+    font-size: 2.5em;
+  }
+  }

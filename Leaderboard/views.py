@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+import traceback
 from django.template import loader
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -51,20 +53,23 @@ def getThrow(request, slug):
         result = json.dumps({'error': '404'},ensure_ascii=False,default=str)
         return JsonResponse(result,safe=False)
 
-@api_view(['POST'])
+@api_view(["POST"])
+@csrf_exempt
 def insertThrow(request):
     try:
         KEYS = dotenv_values()
         json_data = request.body.decode('utf-8')
         init = json.loads(urllib.parse.unquote(json_data))
-        data = jwt.decode(init["jwt"],KEYS["JWT_SECRET"],algorithms=["HS256"])
+        print(init["jwt"])
+        data = jwt.decode(init["jwt"],KEYS["JWT_SECRET"],algorithms=['HS256'],options={"verify_signature": False})
+        print(data)
         if not data:
             return JsonResponse(json.dumps([{'result':'Invalid request'}]),safe=False)
-        print(data)
         user = User(name=data.get("name"),max_velocity=data.get("max_velocity"),distance=data.get("distance"))
         user.save()
         return JsonResponse(json.dumps([{'result':'success'}]),safe=False)
-    except:
+    except Exception:
+        print(traceback.format_exc())
         return JsonResponse(json.dumps([{'result':'error happened!'}]),safe=False)
 
 class VideoUpload(APIView):
